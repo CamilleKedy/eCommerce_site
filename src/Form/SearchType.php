@@ -14,9 +14,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class SearchType extends AbstractType
 {
     
+    // Création du formulaire de recherche
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            // Pour la recherche textuelle
             ->add('string', TextType::class, [
                 'label' => false,
                 'required' => false,
@@ -25,10 +27,11 @@ class SearchType extends AbstractType
                     'class' => 'form-control-sm'
                 ]
             ])
+            // Permet de lier une propriété du formulaire et dire à SF qu'on veut que ça représente une entité
             ->add('categories', EntityType::class, [
                 'label' => false,
                 'required' => false,
-                'class' => Category::class, //A quoi sera lié les données de ces categories
+                'class' => Category::class, //A quoi sera lié les données de ces categories ? A la classe Category
                 'multiple' =>true,
                 'expanded' => true
             ])
@@ -41,6 +44,7 @@ class SearchType extends AbstractType
         ;
     }
 
+    // Liaison à la search class de symfony
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

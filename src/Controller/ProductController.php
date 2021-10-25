@@ -25,9 +25,8 @@ class ProductController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        // Récuperation du répository pour utiliser la fonction findAll()
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
         
+        // instanciation de la recherche du user
         $search = new Search();
         $form = $this->createForm(SearchType::class, $search);
 
@@ -37,6 +36,11 @@ class ProductController extends AbstractController
             //fonction pour la recherche
             $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
             
+        } else {
+            // Récuperation du répository pour utiliser la fonction findAll()
+            // Si le formulaire n'est pas valide on montre tous nos produits
+            $products = $this->entityManager->getRepository(Product::class)->findAll();
+        
         }
 
         //passage des éléments à twig pour l'affichage
@@ -54,13 +58,15 @@ class ProductController extends AbstractController
     {
         //Le slug en commentaire dit a symfony que la route peut varier dependament de l'article qu'on veut afficher
         $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
-        
+        $products = $this->entityManager->getRepository(Product::class)->findBy(['isBest' => 1]);
+
         if(!$product){
             return $this->redirectToRoute('products');
         }
 
         return $this->render('product/show.html.twig', [
-            'product' => $product
+            'product' => $product,
+            'products' => $products
         ]);
     }
 }

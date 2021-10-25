@@ -38,7 +38,7 @@ class RegisterType extends AbstractType
                     'placeholder' => 'Merci de saisir votre nom'     //(15)
                 ]
             ])
-            ->add('email', EmailType::class, [
+            ->add('email', EmailType::class, [//Empêche l'insertion de mots sans arobase
                 'label' => 'Votre email',
                 'constraints' => new Length([
                     'min' => 2,
@@ -48,7 +48,7 @@ class RegisterType extends AbstractType
                     'placeholder' => 'Merci de saisir votre adresse mail'     //(15)
                 ]
             ])
-            ->add('password', RepeatedType::class, [    //(16 9:50)
+            ->add('password', RepeatedType::class, [    //Le mot de passe et la confirmation doivent être identiques
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques',
                 //'label' => 'Votre mot de passe',

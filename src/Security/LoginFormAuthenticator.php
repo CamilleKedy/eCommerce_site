@@ -1,5 +1,5 @@
 <?php
-//(19 5:50) code différent
+
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
