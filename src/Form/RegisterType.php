@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints\Length;
 
 class RegisterType extends AbstractType
 {
+
+    // Formulaire d'inscription
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -25,7 +27,7 @@ class RegisterType extends AbstractType
                     'max' => 30
                 ]), //Contrainte sur la longueur du prenom min 2 caractères max 30 caractères
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre prénom'     //(15)
+                    'placeholder' => 'Merci de saisir votre prénom'  
                 ]
             ])
             ->add('lastname', TextType::class, [
@@ -35,7 +37,7 @@ class RegisterType extends AbstractType
                     'max' => 30
                 ]),
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre nom'     //(15)
+                    'placeholder' => 'Merci de saisir votre nom'   
                 ]
             ])
             ->add('email', EmailType::class, [//Empêche l'insertion de mots sans arobase
@@ -45,7 +47,7 @@ class RegisterType extends AbstractType
                     'max' => 60
                 ]),
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre adresse mail'     //(15)
+                    'placeholder' => 'Merci de saisir votre adresse mail'    
                 ]
             ])
             ->add('password', RepeatedType::class, [    //Le mot de passe et la confirmation doivent être identiques
@@ -56,20 +58,20 @@ class RegisterType extends AbstractType
                 'first_options' => [ 
                     'label' => 'Votre mot de passe',
                     'attr' => [
-                        'placeholder' => 'Merci de saisir votre mot de passe'     //(15)
+                        'placeholder' => 'Merci de saisir votre mot de passe'     
                     ] 
                 ],
                 'second_options' => [ 
                     'label' => 'Confirmez votre mot de passe',
                     'attr' => [
-                        'placeholder' => 'Merci de confirmer votre mot de passe'     //(15)
+                        'placeholder' => 'Merci de confirmer votre mot de passe'     
                     ]
                 ]
                 
             ])
             
             ->add('submit', SubmitType::class, [
-                'label' => "S'inscrire",            //(15)
+                'label' => "S'inscrire",           
             ])
         ;
     }

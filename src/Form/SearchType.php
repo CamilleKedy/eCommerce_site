@@ -31,7 +31,7 @@ class SearchType extends AbstractType
             ->add('categories', EntityType::class, [
                 'label' => false,
                 'required' => false,
-                'class' => Category::class, //A quoi sera lié les données de ces categories ? A la classe Category
+                'class' => Category::class, //les données de ces categories sont liées à la classe Category
                 'multiple' =>true,
                 'expanded' => true
             ])

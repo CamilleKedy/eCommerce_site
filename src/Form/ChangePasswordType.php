@@ -14,6 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ChangePasswordType extends AbstractType
 {
+
+    // Formulaire du changement de mot de passe
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -41,17 +43,17 @@ class ChangePasswordType extends AbstractType
                 'mapped' => false, //pour dire à symfony que 'new_password' ne fait pas partie des propriétés de l'entité user et qu'il n'essaie pas de le lier à celle-ci
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques',
                 'label' => 'Saisissez le nouveau mot de passe',
-                'required' => true, //Rends la saisie obligatoire
+                'required' => true, 
                 'first_options' => [ 
                     'label' => 'Votre nouveau mot de passe',
                     'attr' => [
-                        'placeholder' => 'Merci de saisir votre nouveau mot de passe'     //(15)
+                        'placeholder' => 'Merci de saisir votre nouveau mot de passe'     
                     ] 
                 ],
                 'second_options' => [ 
                     'label' => 'Confirmez votre mot de passe',
                     'attr' => [
-                        'placeholder' => 'Merci de confirmer votre nouveau mot de passe'     //(15)
+                        'placeholder' => 'Merci de confirmer votre nouveau mot de passe'   
                     ]
                 ]
                 

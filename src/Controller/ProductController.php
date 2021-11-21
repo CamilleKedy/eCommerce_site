@@ -56,7 +56,7 @@ class ProductController extends AbstractController
      */
     public function show($slug): Response 
     {
-        //Le slug en commentaire dit a symfony que la route peut varier dependament de l'article qu'on veut afficher
+        //Le {slug} en commentaire dit a symfony que la route peut varier dependament de l'article qu'on veut afficher
         $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
         $products = $this->entityManager->getRepository(Product::class)->findBy(['isBest' => 1]);
 

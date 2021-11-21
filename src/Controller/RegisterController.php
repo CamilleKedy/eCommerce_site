@@ -16,7 +16,7 @@ class RegisterController extends AbstractController
 
     private $entityManager;
 
-    //(16) injection de dépendance
+    // injection de dépendance
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager;
     }
@@ -27,9 +27,9 @@ class RegisterController extends AbstractController
     public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
-        $form = $this->createForm(RegisterType::class, $user); //injection de la classe RegisterType et passage des data à l'objet (15)
+        $form = $this->createForm(RegisterType::class, $user); //injection de la classe RegisterType et passage des data à l'objet 
 
-        //(16)
+        
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             
@@ -39,10 +39,6 @@ class RegisterController extends AbstractController
             //dd($password);
             $user->setPassword($password);//Réinjection du mot de passe encrypté dans l'objet $user
 
-
-            /*  $doctrine = $this->getDoctrine()->getManager();
-                On a plus besoin de la ligne d'en haut car on a créé l'entityManager dans le constructeur
-                $doctrine->persist($user); devient donc $this->entityManager->persist($user); idem pour après (16) */
             
             $this->entityManager->persist($user); //figer la data
             $this->entityManager->flush(); //doctrine prend l'objet et l'enregistre en base de données
@@ -50,7 +46,7 @@ class RegisterController extends AbstractController
         }
 
         return $this->render('register/index.html.twig', [
-            'form' => $form->createView()                   // (15)
+            'form' => $form->createView()                  
         ]);
     }
 }

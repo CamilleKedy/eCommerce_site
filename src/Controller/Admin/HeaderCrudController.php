@@ -15,7 +15,7 @@ class HeaderCrudController extends AbstractCrudController
         return Header::class;
     }
 
-    
+    // Configuration des champs de l'onglet Header dans EasyAdmin
     public function configureFields(string $pageName): iterable
     {
         return [
